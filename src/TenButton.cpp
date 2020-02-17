@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "TenButton.h"
+#include "Level1.h"
 TenButton::TenButton()
 	:Button(
 		"../Assets/textures/10.png",
@@ -27,6 +28,27 @@ bool TenButton::ButtonClick()
 	{
 		m_isClicked = false;
 	}
+
+	return false;
+}
+
+bool TenButton::ButtonClick(Level1* sender)
+{
+	if (m_mouseOver() && m_mouseButtonClicked)
+	{
+		if (!m_isClicked)
+		{
+
+			sender->addBet(10);
+			m_isClicked = true;
+		}
+		return true;
+	}
+	else
+	{
+		m_isClicked = false;
+	}
+
 
 	return false;
 }

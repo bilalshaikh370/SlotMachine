@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "TwentyButton.h"
+#include "Level1.h"
 
 
 TwentyButton::TwentyButton()
@@ -32,3 +33,25 @@ bool TwentyButton::ButtonClick()
 
 	return false;
 }
+
+bool TwentyButton::ButtonClick(Level1* sender)
+{
+
+	if (m_mouseOver() && m_mouseButtonClicked)
+	{
+		if (!m_isClicked)
+		{
+
+			sender->addBet(20);
+			m_isClicked = true;
+		}
+		return true;
+	}
+	else
+	{
+		m_isClicked = false;
+	}
+
+	return false;
+	
+	}

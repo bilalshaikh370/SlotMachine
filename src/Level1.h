@@ -20,6 +20,7 @@
 #include "Grapes.h"
 #include "Orange.h"
 #include "Seven.h"
+#include "SlotMachine.h"
 
 class Level1 : public Scene
 {
@@ -33,9 +34,13 @@ public:
 	virtual void handleEvents() override;
 	virtual void start() override;
 
+	void spin();
+	void addBet(int betAmount);
+
 private:
 	//game objects
 	Middle* m_pMiddle;
+
 	Banana* m_pBanana1;
 	Banana* m_pBanana2;
 	Banana* m_pBanana3;
@@ -73,7 +78,9 @@ private:
 
 	Label* m_pCurrentBet;
 	Label* m_pPlayerMoney;
+	Label* m_pMessage;
 
+	SlotMachine* m_slotMachine;
 
 	
 	glm::vec2 m_mousePosition;

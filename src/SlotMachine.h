@@ -4,19 +4,20 @@
 #include <string>
 
 
-class slotMachine
+class SlotMachine
 {
 public:
+
+	SlotMachine();
+	~SlotMachine();
 	int playerMoney = 1000;
-	int winnings = 0;
 	int jackpot = 5000;
-	int turn = 0;
+	int winnings = 0;
+	int spinResult;
 	int playerBet = 0;
 	int winNumber = 0;
 	int lossNumber = 0;
-	int spinResult;
 	std::string fruits = "";
-	int winRatio = 0;
 	int grapes = 0;
 	int bananas = 0;
 	int oranges = 0;
@@ -28,18 +29,20 @@ public:
 
 
 	void resetFruitTally();
-	void showPlayerStats();
 	void resetAll();
 	void checkJackPot();
-	void showWinMessage();
-	void showLossMessage();
-	void checkRange();
-	void Reels();
+	bool checkRange(int value, int lowerBounds, int upperBounds);
+	std::string* Reels();
 	void determineWinnings();
+	std::string showWinMessage();
+	std::string showLossMessage();
+	std::string Spin();
+	void addBet(int betAmount);
+	std::string getBetAmount() { return std::to_string(playerBet); }
+	std::string getPlayerMoney() { return std::to_string(playerMoney); }
 
 private:
-	slotMachine();
-	~slotMachine();
+
 };
 
 

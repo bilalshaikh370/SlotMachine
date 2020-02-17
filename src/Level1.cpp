@@ -18,6 +18,8 @@ void Level1::draw()
 	m_pBanana1->draw();
 	m_pCherry2->draw();
 	m_pBell3->draw();
+
+	m_pMessage->draw();
 	
 
 	
@@ -38,19 +40,19 @@ void Level1::draw()
 void Level1::update()
 {
 	m_pSpinButton->setMousePosition(m_mousePosition);
-	m_pSpinButton->ButtonClick();
+	m_pSpinButton->ButtonClick(this);
 	m_pResetButton->setMousePosition(m_mousePosition);
-	m_pResetButton->ButtonClick();
+	m_pResetButton->ButtonClick(this);
 	m_pBetButton->setMousePosition(m_mousePosition);
-	m_pBetButton->ButtonClick();
+	m_pBetButton->ButtonClick(this);
 	m_pFiveDollarButton->setMousePosition(m_mousePosition);
-	m_pFiveDollarButton->ButtonClick();
+	m_pFiveDollarButton->ButtonClick(this);
 	m_pTenButton->setMousePosition(m_mousePosition);
-	m_pTenButton->ButtonClick();
+	m_pTenButton->ButtonClick(this);
 	m_pTwentyButton->setMousePosition(m_mousePosition);
-	m_pTwentyButton->ButtonClick();
+	m_pTwentyButton->ButtonClick(this);
 	m_pFiftyButton->setMousePosition(m_mousePosition);
-	m_pFiftyButton->ButtonClick();
+	m_pFiftyButton->ButtonClick(this);
 }
 
 void Level1::clean()
@@ -75,6 +77,43 @@ void Level1::handleEvents()
 			break;
 		case SDL_MOUSEWHEEL:
 			wheel = event.wheel.y;
+			break;
+		case SDL_MOUSEBUTTONDOWN:
+			switch (event.button.button)
+			{
+			case SDL_BUTTON_LEFT:
+				m_pSpinButton->setMouseButtonClicked(true);
+				m_pBetButton->setMouseButtonClicked(true);
+				m_pFiveDollarButton->setMouseButtonClicked(true);
+				m_pTenButton->setMouseButtonClicked(true);
+				m_pResetButton->setMouseButtonClicked(true);
+				m_pFiftyButton->setMouseButtonClicked(true);
+				m_pTwentyButton->setMouseButtonClicked(true);
+
+				
+				
+				
+				break;
+			default:
+				break;
+			}
+			break;
+		case SDL_MOUSEBUTTONUP:
+			switch (event.button.button)
+			{
+			case SDL_BUTTON_LEFT:
+				m_pSpinButton->setMouseButtonClicked(false);
+				m_pBetButton->setMouseButtonClicked(false);
+				m_pFiveDollarButton->setMouseButtonClicked(false);
+				m_pTenButton->setMouseButtonClicked(false);
+				m_pResetButton->setMouseButtonClicked(false);
+				m_pFiftyButton->setMouseButtonClicked(false);
+				m_pTwentyButton->setMouseButtonClicked(false);
+
+				break;
+			default:
+				break;
+			}
 			break;
 		case SDL_TEXTINPUT:
 		case SDL_KEYDOWN:
@@ -240,11 +279,31 @@ void Level1::start()
 	m_pTwentyButton = new TwentyButton();
 	m_pFiftyButton = new FiftyButton();
 
-	SDL_Color White = { 255, 255, 255, 255 };
-	m_pCurrentBet = new Label("Current Bet :0", "Consolas", 15, White, glm::vec2(80.0f, 40.0f));
+	SDL_Color Red = { 255, 0, 0, 255 };
+	m_pCurrentBet = new Label("Current Bet :0", "Consolas", 15, Red, glm::vec2(80.0f, 40.0f));
 	m_pCurrentBet->setParent(this);
 	addChild(m_pCurrentBet);
-	m_pPlayerMoney = new Label("Player Money:1000", "Consolas", 15, White, glm::vec2(80.0f, 25.0f));
+	m_pPlayerMoney = new Label("Player Money:1000", "Consolas", 15, Red, glm::vec2(80.0f, 25.0f));
 	m_pPlayerMoney->setParent(this);
 	addChild(m_pPlayerMoney);
+
+	m_pMessage = new Label("Message:", "Consolas", 15, Red, glm::vec2(635.0f, 25.0f));
+	m_pMessage->setParent(this);
+	addChild(m_pMessage);
+
+	m_slotMachine = new SlotMachine();
+}
+
+void Level1::spin()
+{
+	std::string temp=m_slotMachine->Spin();
+	m_pMessage->setText(temp);
+}
+
+void Level1::addBet(int betAmount)
+{
+	m_slotMachine->addBet(betAmount);
+	std::string temp = "Current Bet :" + m_slotMachine->getBetAmount();
+	m_pCurrentBet->setText(temp);
+	m_pPlayerMoney->setText("Player Money:"+m_slotMachine->getPlayerMoney());
 }

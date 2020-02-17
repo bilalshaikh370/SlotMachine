@@ -99,9 +99,6 @@
     <ClCompile Include="..\src\DisplayObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\slotMachine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Level1.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
@@ -155,6 +152,9 @@
     </ClCompile>
     <ClCompile Include="..\src\Blank.cpp">
       <Filter>Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SlotMachine.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -239,9 +239,6 @@
     <ClInclude Include="..\src\DisplayObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\SlotMachine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\Level1.h">
       <Filter>Scenes</Filter>
     </ClInclude>
@@ -295,6 +292,9 @@
     </ClInclude>
     <ClInclude Include="..\src\Blank.h">
       <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SlotMachine.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

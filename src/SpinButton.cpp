@@ -1,6 +1,6 @@
 #include "SpinButton.h"
-#include "Game.h"
-#include "SlotMachine.h"
+
+#include "Level1.h"
 
 SpinButton::SpinButton()
 	:Button(
@@ -21,9 +21,30 @@ bool SpinButton::ButtonClick()
 	{
 		if (!m_isClicked)
 		{
-			Game::Instance()->changeSceneState(LEVEL_1);
+			//Game::Instance()->changeSceneState(LEVEL_1);
 			//slotMachine::Reels()->
 			
+			m_isClicked = true;
+		}
+		return true;
+	}
+	else
+	{
+		m_isClicked = false;
+	}
+
+	return false;
+}
+
+bool SpinButton::ButtonClick(Level1* sender)
+{
+
+	if (m_mouseOver() && m_mouseButtonClicked)
+	{
+		if (!m_isClicked)
+		{
+			
+			sender->spin();
 			m_isClicked = true;
 		}
 		return true;

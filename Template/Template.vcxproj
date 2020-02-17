@@ -189,7 +189,7 @@
     <ClCompile Include="..\src\Banana.cpp" />
     <ClCompile Include="..\src\Seven.cpp" />
     <ClCompile Include="..\src\ship.cpp" />
-    <ClCompile Include="..\src\slotMachine.cpp" />
+    <ClCompile Include="..\src\SlotMachine.cpp" />
     <ClCompile Include="..\src\SoundManager.cpp" />
     <ClCompile Include="..\src\SpinButton.cpp" />
     <ClCompile Include="..\src\StartScene.cpp" />

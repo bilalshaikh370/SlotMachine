@@ -16,8 +16,35 @@ void Level1::draw()
 {
 	m_pMiddle->draw();
 	m_pBanana1->draw();
-	m_pCherry2->draw();
-	m_pBell3->draw();
+	m_pBanana2->draw();
+	m_pBanana3->draw();
+	/*while (SlotMachine::Spin)
+	{
+		m_pBanana1->draw();
+		m_pBanana2->draw();
+		m_pBanana3->draw();
+		m_pCherry1->draw();
+		m_pCherry2->draw();
+		m_pCherry3->draw();
+		m_pGrapes1->draw();
+		m_pGrapes2->draw();
+		m_pGrapes3->draw();
+		m_pOrange1->draw();
+		m_pOrange2->draw();
+		m_pOrange3->draw();
+		m_pBell1->draw();
+		m_pBell2->draw();
+		m_pBell3->draw();
+		m_pSeven1->draw();
+		m_pSeven2->draw();
+		m_pSeven3->draw();
+		m_pBar1->draw();
+		m_pBar2->draw();
+		m_pBar3->draw();
+		m_pBlank1->draw();
+		m_pBlank2->draw();
+		m_pBlank3->draw();
+	}*/
 
 	m_pMessage->draw();
 	
@@ -296,8 +323,8 @@ void Level1::start()
 
 void Level1::spin()
 {
-	std::string temp=m_slotMachine->Spin();
-	m_pMessage->setText(temp);
+	
+	m_pMessage->setText(m_slotMachine->Spin());
 }
 
 void Level1::addBet(int betAmount)

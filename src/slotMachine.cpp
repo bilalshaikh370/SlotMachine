@@ -211,4 +211,3 @@ void SlotMachine::addBet(int betmount)
 
 
 
-

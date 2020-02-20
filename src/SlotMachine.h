@@ -40,7 +40,7 @@ public:
 	void addBet(int betAmount);
 	std::string getBetAmount() { return std::to_string(playerBet); }
 	std::string getPlayerMoney() { return std::to_string(playerMoney); }
-
+	
 private:
 
 };
